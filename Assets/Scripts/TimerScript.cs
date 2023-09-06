@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class TimerScript : MonoBehaviour
@@ -9,7 +9,7 @@ public class TimerScript : MonoBehaviour
     [SerializeField]
     float countdownValue;
     [SerializeField]
-    TMP_Text timerTextField;
+    Text timerTextField;
     [SerializeField]
     GameObject pauseMenu;
 

@@ -712,6 +712,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510321584}
   m_CullTransparentMesh: 1
+--- !u!114 &621802971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8037058912863799605, guid: eb670e021c26e764d82570785ea479ca, type: 3}
+  m_PrefabInstance: {fileID: 1044138656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &665263554
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,6 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 665263556}
   - component: {fileID: 665263555}
+  - component: {fileID: 665263557}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -756,6 +768,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &665263557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665263554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a959bdd9b27265240ab94fcefaf76f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownValue: 999
+  timerTextField: {fileID: 621802971}
+  pauseMenu: {fileID: 1227384021}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1230,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 1068128378}
+    - target: {fileID: 5012406250125651274, guid: eb670e021c26e764d82570785ea479ca, type: 3}
+      propertyPath: m_Name
+      value: PlayerUI
+      objectReference: {fileID: 0}
     - target: {fileID: 6026011360631954771, guid: eb670e021c26e764d82570785ea479ca, type: 3}
       propertyPath: m_Name
       value: Player
