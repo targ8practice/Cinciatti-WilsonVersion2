@@ -23,6 +23,9 @@ public class PlayerInput : MonoBehaviour
 
     //Movement variables
     [SerializeField] float speed;
+    [SerializeField] float jumpHeight;
+
+   
 
     private Vector3 playerMovementInput()
     {
@@ -34,7 +37,13 @@ public class PlayerInput : MonoBehaviour
 
     void PlayerMove()
     {
+  
         playerController.Move(playerMovementInput() * speed * Time.deltaTime);
+    }
+
+    void PlayerJump()
+    {
+      
     }
     private float ClampCameraAngle(float angle)
     {
@@ -66,6 +75,7 @@ public class PlayerInput : MonoBehaviour
     {
         PlayerMove();
         PlayerLook();
+        PlayerJump();
         
     }
 
