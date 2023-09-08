@@ -17,6 +17,6 @@ public class MenuOptions : MonoBehaviour
 
     public void Load_Scene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainScene");
     }
 }
