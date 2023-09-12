@@ -54,11 +54,6 @@ public class PlayerInput : MonoBehaviour
         playerController.Move(playerMovementInput() * speed * Time.deltaTime);
     }
 
-      void PlayerMove()
-    {
-  
-        playerController.Move(playerMovementInput() * speed * Time.deltaTime);
-    }
 
     private void PlayerJump()
     {
