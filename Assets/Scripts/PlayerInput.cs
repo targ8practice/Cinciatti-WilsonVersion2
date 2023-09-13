@@ -55,23 +55,23 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-    private void PlayerJump()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    //private void PlayerJump()
+    //{
+        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
+        //if(isGrounded && velocity.y < 0)
+        //{
+        //    velocity.y = -2f;
+        //}
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-        }
+        //if(Input.GetButtonDown("Jump") && isGrounded)
+        //{
+        //    velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        //}
 
-        velocity.y += gravity * Time.deltaTime;
-        playerController.Move(velocity * Time.deltaTime);
-    }
+        //velocity.y += gravity * Time.deltaTime;
+        //playerController.Move(velocity * Time.deltaTime);
+    //}
 
     private void PlayerCrouch()
     {
@@ -101,7 +101,7 @@ public class PlayerInput : MonoBehaviour
     {
         Vector2 wantedVelocity = GetMouseInput() * mouseSensitivity;
         rotation += wantedVelocity * Time.deltaTime;
-        rotation.y = ClampCameraAngle(rotation.y);
+        //rotation.y = ClampCameraAngle(rotation.y);
         playerCamera.transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
     }
 
@@ -116,7 +116,7 @@ public class PlayerInput : MonoBehaviour
     {
         PlayerMove();
         PlayerLook();
-        PlayerJump();
+        //PlayerJump();
         PlayerCrouch();  
     }
 
