@@ -101,7 +101,7 @@ public class PlayerInput : MonoBehaviour
     {
         Vector2 wantedVelocity = GetMouseInput() * mouseSensitivity;
         rotation += wantedVelocity * Time.deltaTime;
-        rotation.y = ClampCameraAngle(rotation.y);
+        //rotation.y = ClampCameraAngle(rotation.y);
         playerCamera.transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
     }
 
