@@ -13,6 +13,8 @@ public class TabletPickup : MonoBehaviour
     private Rigidbody tabletRB;
     private GameObject tabletObject;
 
+    public Animator openRoom1;
+
     private void Start()
     {
 
@@ -54,6 +56,8 @@ public class TabletPickup : MonoBehaviour
             isHoldingTablet = false; // Player is no longer holding the tablet
             tabletObject.transform.rotation = placeTabletPosition.transform.rotation;
             tabletRB.isKinematic = true;
+            tabletObject.GetComponent<BoxCollider>().enabled = false;
+            openRoom1.SetBool("OpenRoom1", true);
         }
     }
 }

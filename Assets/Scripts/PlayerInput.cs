@@ -75,6 +75,7 @@ public class PlayerInput : MonoBehaviour
 
     private void PlayerCrouch()
     {
+        /*
         if(Input.GetButtonDown("Crouch"))
         {
             isCrouching = !isCrouching;
@@ -90,6 +91,7 @@ public class PlayerInput : MonoBehaviour
                 speed = 5.0f; 
             }
         }
+        */
     }
     private Vector2 GetMouseInput()
     {

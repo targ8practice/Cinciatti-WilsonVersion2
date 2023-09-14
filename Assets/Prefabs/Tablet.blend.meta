@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: a36e4bd22d43d6947ae18a2806739aa3
+guid: 4e0072b2834c5c14686bf78d8e9549bd
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: BlackLight
-    second: {fileID: 2100000, guid: aee21b8cdf444ad48b2b389ace5a325f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Default
-    second: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GreenLight
-    second: {fileID: 2100000, guid: 48bb0a206bd2664459a9ec433986ddfa, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RedLight
-    second: {fileID: 2100000, guid: 71b1739b592b28145956b6699d1df4d6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Room1Puzzle
-    second: {fileID: 2100000, guid: 170efa970f243a241a51b182d7335d72, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
