@@ -29,6 +29,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Room1Puzzle
     second: {fileID: 2100000, guid: 170efa970f243a241a51b182d7335d72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Room2Puzzle
+    second: {fileID: 2100000, guid: 536cedf8fe8cbf64c96cb75b9b203e3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Room3Puzzle
+    second: {fileID: 2100000, guid: 26aeed6ce1a6b5647af46de4a2a01aec, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
