@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,10 +34,10 @@ public class PlayerInput : MonoBehaviour
     private float gravity = -9.81f;
     private Vector3 velocity;
     private float groundDistance = 0.4f;
-    private bool isGrounded;
+    public bool isGrounded;
     [SerializeField] LayerMask groundMask;
     [SerializeField] Transform groundCheck;
-    private float jumpForce = 3.0f;
+    private float jumpForce = 1.0f;
 
    
 
@@ -55,27 +56,27 @@ public class PlayerInput : MonoBehaviour
     }
 
 
-    //private void PlayerJump()
-    //{
-        //isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+    private void PlayerJump()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        //if(isGrounded && velocity.y < 0)
-        //{
-        //    velocity.y = -2f;
-        //}
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
 
-        //if(Input.GetButtonDown("Jump") && isGrounded)
-        //{
-        //    velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-        //}
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
 
-        //velocity.y += gravity * Time.deltaTime;
-        //playerController.Move(velocity * Time.deltaTime);
-    //}
+        velocity.y += gravity * Time.deltaTime;
+        playerController.Move(velocity * Time.deltaTime);
+    }
 
     private void PlayerCrouch()
     {
-        /*
+        
         if(Input.GetButtonDown("Crouch"))
         {
             isCrouching = !isCrouching;
@@ -91,7 +92,7 @@ public class PlayerInput : MonoBehaviour
                 speed = 5.0f; 
             }
         }
-        */
+        
     }
     private Vector2 GetMouseInput()
     {
@@ -118,7 +119,7 @@ public class PlayerInput : MonoBehaviour
     {
         PlayerMove();
         PlayerLook();
-        //PlayerJump();
+        PlayerJump();
         PlayerCrouch();  
     }
 
