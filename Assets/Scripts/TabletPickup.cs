@@ -9,11 +9,32 @@ public class TabletPickup : MonoBehaviour
     public LayerMask placeLayer;
     public Transform playerHoldingTablet;
     public Transform placeTabletPosition;
+
+    public Transform RoomeOnePlaceTabletPosition;
+    public Transform RoomeTwoPlaceTabletPosition;
+    public Transform RoomeThreePlaceTabletPosition;
+
+
     private bool isHoldingTablet = false;
     private Rigidbody tabletRB;
     private GameObject tabletObject;
 
     public Animator openRoom1;
+
+    public PlayerDetection playerDetection;
+
+    bool roomOneCheck;
+    bool roomTwoCheck;
+    bool roomThreeCheck;
+
+    public GameObject mirrorDoorOne;
+    public GameObject mirrorDoorTwo;
+    public GameObject mirrorDoorThree;
+
+    public GameObject roomTwoBars;
+    public GameObject roomTwoBarsUp;
+    public GameObject roomThreeBars;
+    public GameObject roomThreeBarsUp;
 
     private void Start()
     {
@@ -23,6 +44,10 @@ public class TabletPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        roomOneCheck = playerDetection.inRoomOne;
+        roomTwoCheck = playerDetection.inRoomTwo;
+        roomThreeCheck = playerDetection.inRoomThree;
+
         RaycastHit hit;
 
         if (!isHoldingTablet && Physics.Raycast(transform.position, transform.forward, out hit, pickupRange, pickupLayer))
@@ -46,18 +71,82 @@ public class TabletPickup : MonoBehaviour
                 isHoldingTablet = true;
             }
         }
+
         else if (isHoldingTablet && Input.GetKeyDown(KeyCode.E) && Physics.Raycast(transform.position, transform.forward, out hit, pickupRange, placeLayer))
         {
-            // Check if the player is looking at the placeTabletPosition layer
-            // If so, relocate the tablet to the placeTabletPosition
-            tabletObject.transform.SetParent(null); // Remove from player's hand
-            tabletRB.isKinematic = false; // Enable physics
-            tabletObject.transform.position = placeTabletPosition.position; // Set position to the desired location
-            isHoldingTablet = false; // Player is no longer holding the tablet
-            tabletObject.transform.rotation = placeTabletPosition.transform.rotation;
-            tabletRB.isKinematic = true;
-            tabletObject.GetComponent<BoxCollider>().enabled = false;
-            openRoom1.SetBool("OpenRoom1", true);
+
+            if (!roomOneCheck && !roomTwoCheck && !roomThreeCheck)
+            {
+                // Check if the player is looking at the placeTabletPosition layer
+                // If so, relocate the tablet to the placeTabletPosition
+                tabletObject.transform.SetParent(null); // Remove from player's hand
+                tabletRB.isKinematic = false; // Enable physics
+                tabletObject.transform.position = placeTabletPosition.position; // Set position to the desired location
+                isHoldingTablet = false; // Player is no longer holding the tablet
+                tabletObject.transform.rotation = placeTabletPosition.transform.rotation;
+                tabletRB.isKinematic = true;
+                tabletObject.GetComponent<BoxCollider>().enabled = false;
+                openRoom1.SetBool("OpenRoom1", true);
+            }
+
+            else if (roomOneCheck)
+            {
+                // Same as above except position and rotation is now specific to room one
+                tabletObject.transform.SetParent(null);
+                tabletRB.isKinematic = false;
+                tabletObject.transform.position = RoomeOnePlaceTabletPosition.position;
+                isHoldingTablet = false;
+                tabletObject.transform.rotation = RoomeOnePlaceTabletPosition.transform.rotation;
+                tabletRB.isKinematic = true;
+                tabletObject.GetComponent<BoxCollider>().enabled = false;
+
+                if (tabletObject.tag == "XOR")
+                {
+                    Destroy(mirrorDoorOne);
+                    roomTwoBars.SetActive(false);
+                    roomTwoBarsUp.SetActive(true);
+                }
+                
+                //openRoom1.SetBool("OpenRoom1", true);
+            }
+
+            else if (roomTwoCheck)
+            {
+                tabletObject.transform.SetParent(null);
+                tabletRB.isKinematic = false;
+                tabletObject.transform.position = RoomeTwoPlaceTabletPosition.position;
+                isHoldingTablet = false;
+                tabletObject.transform.rotation = RoomeTwoPlaceTabletPosition.transform.rotation;
+                tabletRB.isKinematic = true;
+                tabletObject.GetComponent<BoxCollider>().enabled = false;
+
+                if (tabletObject.tag == "XOR")
+                {
+                    Destroy(mirrorDoorTwo);
+                    roomThreeBars.SetActive(false);
+                    roomThreeBarsUp.SetActive(true);
+                }
+
+                //openRoom1.SetBool("OpenRoom1", true);
+            }
+
+            else if (roomThreeCheck)
+            {
+                tabletObject.transform.SetParent(null);
+                tabletRB.isKinematic = false;
+                tabletObject.transform.position = RoomeThreePlaceTabletPosition.position;
+                isHoldingTablet = false;
+                tabletObject.transform.rotation = RoomeThreePlaceTabletPosition.transform.rotation;
+                tabletRB.isKinematic = true;
+                tabletObject.GetComponent<BoxCollider>().enabled = false;
+
+                if (tabletObject.tag == "NAND")
+                {
+                    Destroy(mirrorDoorThree);
+                }
+                //openRoom1.SetBool("OpenRoom1", true);
+
+            }
         }
     }
 }

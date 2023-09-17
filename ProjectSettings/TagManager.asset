@@ -4,7 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Room1
+  - RoomOnePlayerDetection
+  - RoomTwoPlayerDetection
+  - RoomThreePlayerDetection
+  - AND
+  - NAND
+  - OR
+  - XOR
+  - XNOR
+  - NOT
+  - NOR
   layers:
   - Default
   - TransparentFX
