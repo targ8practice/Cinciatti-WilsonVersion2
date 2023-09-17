@@ -14,7 +14,6 @@ public class TabletPickup : MonoBehaviour
     public Transform RoomeTwoPlaceTabletPosition;
     public Transform RoomeThreePlaceTabletPosition;
 
-
     private bool isHoldingTablet = false;
     private Rigidbody tabletRB;
     private GameObject tabletObject;
@@ -35,6 +34,11 @@ public class TabletPickup : MonoBehaviour
     public GameObject roomTwoBarsUp;
     public GameObject roomThreeBars;
     public GameObject roomThreeBarsUp;
+
+    public Animator deathSpikes;
+    public PlayerInput playerInput;
+    public Camera playerCam;
+    public Transform room1DeathCam;
 
     private void Start()
     {
@@ -105,6 +109,14 @@ public class TabletPickup : MonoBehaviour
                     Destroy(mirrorDoorOne);
                     roomTwoBars.SetActive(false);
                     roomTwoBarsUp.SetActive(true);
+                }
+
+                else
+                {
+                    playerInput.enabled = false;
+                    playerCam.transform.position = room1DeathCam.transform.position;
+                    playerCam.transform.rotation = room1DeathCam.transform.rotation;
+                    deathSpikes.SetBool("RoomOneIncorrect", true);
                 }
                 
                 //openRoom1.SetBool("OpenRoom1", true);

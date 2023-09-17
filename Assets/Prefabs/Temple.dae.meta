@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: GreenLight
-    second: {fileID: 2100000, guid: 48bb0a206bd2664459a9ec433986ddfa, type: 2}
+    second: {fileID: 2100000, guid: 8a9033e108be24d4ebd9bfbf45deb2a9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
