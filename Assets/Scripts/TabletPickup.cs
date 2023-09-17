@@ -16,6 +16,7 @@ public class TabletPickup : MonoBehaviour
 
     private bool isHoldingTablet = false;
     private Rigidbody tabletRB;
+    private Rigidbody[] deathBlocksRB;
     private GameObject tabletObject;
 
     public Animator openRoom1;
@@ -36,13 +37,22 @@ public class TabletPickup : MonoBehaviour
     public GameObject roomThreeBarsUp;
 
     public Animator deathSpikes;
+    public Animator deathWater;
     public PlayerInput playerInput;
     public Camera playerCam;
     public Transform room1DeathCam;
+    public Transform room2DeathCam;
+    public Transform room3DeathCam;
+
+    public GameObject[] deathBlocks;
 
     private void Start()
     {
-
+        deathBlocksRB = new Rigidbody[deathBlocks.Length];
+        for (int i = 0; i < deathBlocks.Length; i++)
+        {
+            deathBlocksRB[i] = deathBlocks[i].GetComponent<Rigidbody>();
+        }
     }
 
     // Update is called once per frame
@@ -118,8 +128,6 @@ public class TabletPickup : MonoBehaviour
                     playerCam.transform.rotation = room1DeathCam.transform.rotation;
                     deathSpikes.SetBool("RoomOneIncorrect", true);
                 }
-                
-                //openRoom1.SetBool("OpenRoom1", true);
             }
 
             else if (roomTwoCheck)
@@ -139,7 +147,13 @@ public class TabletPickup : MonoBehaviour
                     roomThreeBarsUp.SetActive(true);
                 }
 
-                //openRoom1.SetBool("OpenRoom1", true);
+                else
+                {
+                    playerInput.enabled = false;
+                    playerCam.transform.position = room2DeathCam.transform.position;
+                    playerCam.transform.rotation = room2DeathCam.transform.rotation;
+                    deathWater.SetBool("RoomTwoIncorrect", true);
+                }
             }
 
             else if (roomThreeCheck)
@@ -156,8 +170,18 @@ public class TabletPickup : MonoBehaviour
                 {
                     Destroy(mirrorDoorThree);
                 }
-                //openRoom1.SetBool("OpenRoom1", true);
 
+                else
+                {
+                    playerInput.enabled = false;
+                    playerCam.transform.position = room3DeathCam.transform.position;
+                    playerCam.transform.rotation = room3DeathCam.transform.rotation;
+
+                    foreach (Rigidbody rb in deathBlocksRB)
+                    {
+                        rb.isKinematic = false;
+                    }
+                }
             }
         }
     }
