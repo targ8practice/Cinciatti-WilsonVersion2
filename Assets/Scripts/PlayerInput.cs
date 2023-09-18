@@ -39,7 +39,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] Transform groundCheck;
     private float jumpForce = 1.0f;
 
-   
+    float clampCameraAngle = 60f;
 
     private Vector3 playerMovementInput()
     {
@@ -104,7 +104,7 @@ public class PlayerInput : MonoBehaviour
     {
         Vector2 wantedVelocity = GetMouseInput() * mouseSensitivity;
         rotation += wantedVelocity * Time.deltaTime;
-        //rotation.y = ClampCameraAngle(rotation.y);
+        rotation.y = Mathf.Clamp(rotation.y, -clampCameraAngle, clampCameraAngle);
         playerCamera.transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
     }
 

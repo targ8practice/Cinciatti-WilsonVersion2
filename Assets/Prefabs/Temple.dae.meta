@@ -22,6 +22,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: HangingVines
+    second: {fileID: 2100000, guid: 86bb7cbc38d0ba846b511817249f2ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: RedLight
     second: {fileID: 2100000, guid: 71b1739b592b28145956b6699d1df4d6, type: 2}
   - first:
