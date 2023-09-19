@@ -18,7 +18,7 @@ public class CheckAnimatorActivation : MonoBehaviour
         //check if the animator reference is set
         if (room1SpikesAnimator == null)
         {
-            Debug.LogError("Room1Spikes Animator reference not set!");
+            Debug.LogError("Animator reference not set!");
             return;
         }
     }
@@ -31,7 +31,7 @@ public class CheckAnimatorActivation : MonoBehaviour
         if (isPlaying && !wasActivated)
         {
             //animator was just activated
-            Debug.Log("Room1Spikes Animator was activated");
+            Debug.Log("Animator was activated");
             wasActivated = true;
 
             if (count == 1)
@@ -56,7 +56,7 @@ public class CheckAnimatorActivation : MonoBehaviour
                 StartCoroutine(LoadSceneWithDelay("MainMenu", 2.0f)); // Load "MainMenu" after 2 seconds
             }
             // Animator has stopped playing
-            Debug.Log("Room1Spikes Animator was deactivated");
+            Debug.Log("Animator was deactivated");
             wasActivated = false;
         }
     }
