@@ -27,6 +27,9 @@ public class TabletPickup : MonoBehaviour
     bool roomOneCheck;
     bool roomTwoCheck;
     bool roomThreeCheck;
+    public bool puzzleOneComplete;
+    public bool puzzleTwoComplete;
+    public bool puzzleThreeComplete;
 
     public GameObject mirrorDoorOne;
     public GameObject mirrorDoorTwo;
@@ -46,6 +49,9 @@ public class TabletPickup : MonoBehaviour
     public Transform room3DeathCam;
 
     public GameObject[] deathBlocks;
+
+    public AudioSource correctAnswer;
+    public AudioSource incorrectAnswer;
 
     private void Start()
     {
@@ -102,6 +108,7 @@ public class TabletPickup : MonoBehaviour
                 tabletRB.isKinematic = true;
                 tabletObject.GetComponent<BoxCollider>().enabled = false;
                 openRoom1.SetBool("OpenRoom1", true);
+                correctAnswer.Play();
             }
 
             else if (roomOneCheck)
@@ -120,6 +127,8 @@ public class TabletPickup : MonoBehaviour
                     Destroy(mirrorDoorOne);
                     roomTwoBars.SetActive(false);
                     roomTwoBarsUp.SetActive(true);
+                    puzzleOneComplete = true;
+                    correctAnswer.Play();
                 }
 
                 else
@@ -128,6 +137,7 @@ public class TabletPickup : MonoBehaviour
                     playerCam.transform.position = room1DeathCam.transform.position;
                     playerCam.transform.rotation = room1DeathCam.transform.rotation;
                     deathSpikes.SetBool("RoomOneIncorrect", true);
+                    incorrectAnswer.Play();
                 }
             }
 
@@ -146,6 +156,8 @@ public class TabletPickup : MonoBehaviour
                     Destroy(mirrorDoorTwo);
                     roomThreeBars.SetActive(false);
                     roomThreeBarsUp.SetActive(true);
+                    puzzleTwoComplete = true;
+                    correctAnswer.Play();
                 }
 
                 else
@@ -154,6 +166,7 @@ public class TabletPickup : MonoBehaviour
                     playerCam.transform.position = room2DeathCam.transform.position;
                     playerCam.transform.rotation = room2DeathCam.transform.rotation;
                     deathWater.SetBool("RoomTwoIncorrect", true);
+                    incorrectAnswer.Play();
                 }
             }
 
@@ -170,6 +183,8 @@ public class TabletPickup : MonoBehaviour
                 if (tabletObject.tag == "NAND")
                 {
                     Destroy(mirrorDoorThree);
+                    puzzleThreeComplete = true;
+                    correctAnswer.Play();
                 }
 
                 else
@@ -182,8 +197,7 @@ public class TabletPickup : MonoBehaviour
                     {
                         rb.isKinematic = false;
                         StartCoroutine(LoadSceneWithDelay("MainMenu", 5.0f));
-
-
+                        incorrectAnswer.Play();
                     }
                 }
             }
