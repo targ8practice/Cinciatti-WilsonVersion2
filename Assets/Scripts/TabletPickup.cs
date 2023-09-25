@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TabletPickup : MonoBehaviour
 {
@@ -50,8 +51,11 @@ public class TabletPickup : MonoBehaviour
 
     public GameObject[] deathBlocks;
 
+    public TimerScript timerScript;
     public AudioSource correctAnswer;
     public AudioSource incorrectAnswer;
+    double playerScoreValue = 0;
+    public Text playerScore;
 
     private void Start()
     {
@@ -129,6 +133,9 @@ public class TabletPickup : MonoBehaviour
                     roomTwoBarsUp.SetActive(true);
                     puzzleOneComplete = true;
                     correctAnswer.Play();
+                    playerScoreValue = playerScoreValue + 100;
+                    AddTimeBonus();
+                    playerScore.text = playerScoreValue.ToString();
                 }
 
                 else
@@ -158,6 +165,9 @@ public class TabletPickup : MonoBehaviour
                     roomThreeBarsUp.SetActive(true);
                     puzzleTwoComplete = true;
                     correctAnswer.Play();
+                    playerScoreValue = playerScoreValue + 100;
+                    AddTimeBonus();
+                    playerScore.text = playerScoreValue.ToString();
                 }
 
                 else
@@ -185,6 +195,9 @@ public class TabletPickup : MonoBehaviour
                     Destroy(mirrorDoorThree);
                     puzzleThreeComplete = true;
                     correctAnswer.Play();
+                    playerScoreValue = playerScoreValue + 100;
+                    AddTimeBonus();
+                    playerScore.text = playerScoreValue.ToString();
                 }
 
                 else
@@ -201,6 +214,19 @@ public class TabletPickup : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void AddTimeBonus()
+    {
+        if (double.TryParse(timerScript.timerText.text, out double timerValue))
+        {
+            playerScoreValue += timerValue;
+        }
+
+        else
+        {
+            Debug.LogError("Failed to parse timerText.text as a double.");
         }
     }
 

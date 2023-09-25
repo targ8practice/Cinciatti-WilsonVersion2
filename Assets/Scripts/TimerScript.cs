@@ -18,6 +18,9 @@ public class TimerScript : MonoBehaviour
 
     public bool restartCounter = true;
 
+    public Text timerText;
+    public Text timerLabel;
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -27,7 +30,8 @@ public class TimerScript : MonoBehaviour
 
     private void Start()
     {
-        playerUI.enabled = false;
+        timerLabel.enabled = false;
+        timerText.enabled = false;
     }
 
     public void CounterRestartOne()
@@ -52,7 +56,8 @@ public class TimerScript : MonoBehaviour
 
     public void StartTimer()
     {
-        playerUI.enabled = true;
+        timerLabel.enabled = true;
+        timerText.enabled = true;
 
         if (countDown > 0f)
         {
@@ -69,6 +74,21 @@ public class TimerScript : MonoBehaviour
 
     private void Update()
     {
+        if (countDown <= 45)
+        {
+            timerText.color = Color.yellow;
+        }
+
+        if (countDown <= 30)
+        {
+            timerText.color = new Color(1.0f, 0.64f, 0.0f);
+        }
+
+        if (countDown <= 15)
+        {
+            timerText.color = Color.red;
+        }
+
         if (playerDetection.inRoomOne == true)
         {
             CounterRestartOne();
@@ -77,7 +97,8 @@ public class TimerScript : MonoBehaviour
 
         if (tabletPickup.puzzleOneComplete == true)
         {
-            playerUI.enabled = false;
+            timerLabel.enabled = false;
+            timerText.enabled = false;
         }
 
         if (tabletPickup.puzzleOneComplete == true && playerDetection.inRoomTwo)
@@ -88,14 +109,22 @@ public class TimerScript : MonoBehaviour
 
         if (tabletPickup.puzzleTwoComplete == true)
         {
-            playerUI.enabled = false;
-            restartCounter = true;
+            //restartCounter = true;
+            timerLabel.enabled = false;
+            timerText.enabled = false;
         }
 
         if (tabletPickup.puzzleTwoComplete == true && playerDetection.inRoomThree)
         {
             CounterRestartOne();
             StartTimer();
+        }
+
+        if (tabletPickup.puzzleThreeComplete == true)
+        {
+            // Add victory transtition
+            timerLabel.enabled = false;
+            timerText.enabled = false;
         }
     }
 }
