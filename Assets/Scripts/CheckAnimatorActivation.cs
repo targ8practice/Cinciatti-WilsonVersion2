@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class CheckAnimatorActivation : MonoBehaviour
@@ -10,7 +10,12 @@ public class CheckAnimatorActivation : MonoBehaviour
 
     private bool wasActivated = false;
     private int count;
-    
+
+    public TimerScript timerScript;
+    public TabletPickup tabletPickup;
+    public Text timerValueText;
+    public AudioSource timeExpired;
+    bool audioPlayed;
 
     void Start()
     {
@@ -25,9 +30,12 @@ public class CheckAnimatorActivation : MonoBehaviour
 
     void Update()
     {
+        //timerValueText = timerScript.timerText;
+
         //check if the animator is currently playing an animation
         bool isPlaying = room1SpikesAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f;
 
+        
         if (isPlaying && !wasActivated)
         {
             //animator was just activated
@@ -58,6 +66,22 @@ public class CheckAnimatorActivation : MonoBehaviour
             // Animator has stopped playing
             Debug.Log("Animator was deactivated");
             wasActivated = false;
+        }
+
+        if (double.TryParse(timerValueText.text, out double timerValue) && timerValue < 1)
+        {
+            StartCoroutine(LoadSceneWithDelay("MainMenu", 2.0f));
+
+            if (audioPlayed == false)
+            {
+                timeExpired.Play();
+                audioPlayed = true;
+            }
+        }
+
+        else if (tabletPickup.puzzleThreeComplete == true)
+        {
+            StartCoroutine(LoadSceneWithDelay("Congratulations", 2.0f));
         }
     }
     private IEnumerator LoadSceneWithDelay(string sceneName, float delayInSeconds)

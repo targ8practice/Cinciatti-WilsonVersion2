@@ -2949,6 +2949,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room1SpikesAnimator: {fileID: 558425400}
+  timerScript: {fileID: 611697435}
+  tabletPickup: {fileID: 904791162}
+  timerValueText: {fileID: 621802971}
+  timeExpired: {fileID: 1728700279}
 --- !u!1 &592073143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3430,7 +3434,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665263554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a959bdd9b27265240ab94fcefaf76f1a, type: 3}
   m_Name: 
@@ -3841,12 +3845,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748281418}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8a527a266e7ac49975c975c367e550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   room1SpikesAnimator: {fileID: 748281422}
+  timerScript: {fileID: 611697435}
+  tabletPickup: {fileID: 904791162}
+  timerValueText: {fileID: 621802971}
+  timeExpired: {fileID: 1728700279}
 --- !u!1 &750854207
 GameObject:
   m_ObjectHideFlags: 0
@@ -5362,6 +5370,10 @@ PrefabInstance:
     - target: {fileID: 8016849764888753075, guid: eb670e021c26e764d82570785ea479ca, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -138
+      objectReference: {fileID: 0}
+    - target: {fileID: 8037058912863799605, guid: eb670e021c26e764d82570785ea479ca, type: 3}
+      propertyPath: m_Text
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb670e021c26e764d82570785ea479ca, type: 3}
