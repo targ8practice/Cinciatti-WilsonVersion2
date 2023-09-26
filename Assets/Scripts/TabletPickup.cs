@@ -57,6 +57,8 @@ public class TabletPickup : MonoBehaviour
     double playerScoreValue = 0;
     public Text playerScore;
 
+    bool pauseTimer;
+
     private void Start()
     {
         deathBlocksRB = new Rigidbody[deathBlocks.Length];

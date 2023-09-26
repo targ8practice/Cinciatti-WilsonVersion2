@@ -21,6 +21,8 @@ public class TimerScript : MonoBehaviour
     public Text timerText;
     public Text timerLabel;
 
+    public bool pauseTimer;
+
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -59,7 +61,7 @@ public class TimerScript : MonoBehaviour
         timerLabel.enabled = true;
         timerText.enabled = true;
 
-        if (countDown > 0f)
+        if (countDown > 0f && pauseTimer == false)
         {
             countDown -= Time.deltaTime;
 
@@ -74,6 +76,31 @@ public class TimerScript : MonoBehaviour
 
     private void Update()
     {
+        if (tabletPickup.puzzleOneComplete)
+        {
+            pauseTimer = true;
+        }
+
+        if (tabletPickup.puzzleOneComplete && playerDetection.inRoomTwo)
+        {
+            pauseTimer = false;
+        }
+
+        if (tabletPickup.puzzleTwoComplete)
+        {
+            pauseTimer = true;
+        }
+
+        if (tabletPickup.puzzleTwoComplete && playerDetection.inRoomThree)
+        {
+            pauseTimer = false;
+        }
+
+        if (tabletPickup.puzzleThreeComplete)
+        {
+            pauseTimer = true;
+        }
+
         if (countDown <= 45)
         {
             timerText.color = Color.yellow;
