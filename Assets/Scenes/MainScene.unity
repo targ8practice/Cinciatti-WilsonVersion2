@@ -2953,6 +2953,25 @@ MonoBehaviour:
   tabletPickup: {fileID: 904791162}
   timerValueText: {fileID: 621802971}
   timeExpired: {fileID: 1728700279}
+  playerCam: {fileID: 904791161}
+  room1DeathCam: {fileID: 1461214426}
+  room2DeathCam: {fileID: 1290559011}
+  room3DeathCam: {fileID: 1608816956}
+  playerInput: {fileID: 611697429}
+  playerDetection: {fileID: 611697434}
+  deathBlocks:
+  - {fileID: 26292286}
+  - {fileID: 332534598}
+  - {fileID: 1620482836}
+  - {fileID: 79047879}
+  - {fileID: 1339083476}
+  - {fileID: 1496180446}
+  - {fileID: 1923282682}
+  - {fileID: 534035478}
+  - {fileID: 1523567011}
+  - {fileID: 1474687466}
+  - {fileID: 1328407170}
+  deathBlocksRB: []
 --- !u!1 &592073143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,6 +3266,7 @@ MonoBehaviour:
   restartCounter: 1
   timerText: {fileID: 621802971}
   timerLabel: {fileID: 602857153}
+  pauseTimer: 0
 --- !u!1001 &618989234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3447,6 +3467,7 @@ MonoBehaviour:
   restartCounter: 1
   timerText: {fileID: 0}
   timerLabel: {fileID: 0}
+  pauseTimer: 0
 --- !u!1 &673212180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +3876,14 @@ MonoBehaviour:
   tabletPickup: {fileID: 904791162}
   timerValueText: {fileID: 621802971}
   timeExpired: {fileID: 1728700279}
+  playerCam: {fileID: 0}
+  room1DeathCam: {fileID: 0}
+  room2DeathCam: {fileID: 0}
+  room3DeathCam: {fileID: 0}
+  playerInput: {fileID: 0}
+  playerDetection: {fileID: 0}
+  deathBlocks: []
+  deathBlocksRB: []
 --- !u!1 &750854207
 GameObject:
   m_ObjectHideFlags: 0

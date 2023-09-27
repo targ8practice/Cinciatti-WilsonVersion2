@@ -12,7 +12,7 @@ public class MenuOptions : MonoBehaviour
     public void Button_exit()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void Load_Scene()

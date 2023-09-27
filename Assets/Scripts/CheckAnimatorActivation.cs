@@ -17,6 +17,16 @@ public class CheckAnimatorActivation : MonoBehaviour
     public AudioSource timeExpired;
     bool audioPlayed;
 
+    public Camera playerCam;
+    public Transform room1DeathCam;
+    public Transform room2DeathCam;
+    public Transform room3DeathCam;
+    public PlayerInput playerInput;
+    public PlayerDetection playerDetection;
+
+    public GameObject[] deathBlocks;
+    public Rigidbody[] deathBlocksRB;
+
     void Start()
     {
         count = 0;
@@ -26,6 +36,13 @@ public class CheckAnimatorActivation : MonoBehaviour
             Debug.LogError("Animator reference not set!");
             return;
         }
+
+        deathBlocksRB = new Rigidbody[deathBlocks.Length];
+        for (int i = 0; i < deathBlocks.Length; i++)
+        {
+            deathBlocksRB[i] = deathBlocks[i].GetComponent<Rigidbody>();
+        }
+
     }
 
     void Update()
@@ -77,6 +94,36 @@ public class CheckAnimatorActivation : MonoBehaviour
                 timeExpired.Play();
                 audioPlayed = true;
             }
+
+            if (playerDetection.inRoomOne)
+            {
+                // Room One
+                tabletPickup.deathSpikes.SetBool("RoomOneIncorrect", true);
+                playerInput.enabled = false;
+                playerCam.transform.position = room1DeathCam.transform.position;
+                playerCam.transform.rotation = room1DeathCam.transform.rotation;
+            }
+
+            else if (playerDetection.inRoomTwo)
+            {
+                // Room Two
+                tabletPickup.deathWater.SetBool("RoomTwoIncorrect", true);
+                playerInput.enabled = false;
+                playerCam.transform.position = room2DeathCam.transform.position;
+                playerCam.transform.rotation = room2DeathCam.transform.rotation;
+            }
+
+            else if (playerDetection.inRoomThree)
+            {
+                // Room Three
+                foreach (Rigidbody rb in deathBlocksRB)
+                {
+                    rb.isKinematic = false;
+                }
+                playerInput.enabled = false;
+                playerCam.transform.position = room3DeathCam.transform.position;
+                playerCam.transform.rotation = room3DeathCam.transform.rotation;
+            } 
         }
 
         else if (tabletPickup.puzzleThreeComplete == true)

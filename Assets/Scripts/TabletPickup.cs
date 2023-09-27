@@ -147,6 +147,7 @@ public class TabletPickup : MonoBehaviour
                     playerCam.transform.rotation = room1DeathCam.transform.rotation;
                     deathSpikes.SetBool("RoomOneIncorrect", true);
                     incorrectAnswer.Play();
+                    StartCoroutine(LoadSceneWithDelay("MainMenu", 2.0f));
                 }
             }
 
@@ -179,6 +180,7 @@ public class TabletPickup : MonoBehaviour
                     playerCam.transform.rotation = room2DeathCam.transform.rotation;
                     deathWater.SetBool("RoomTwoIncorrect", true);
                     incorrectAnswer.Play();
+                    StartCoroutine(LoadSceneWithDelay("MainMenu", 2.0f));
                 }
             }
 
